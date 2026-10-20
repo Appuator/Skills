@@ -12,16 +12,27 @@ Claude starts every session with no memory of earlier ones. These files are that
 | `SPEC.md` | What are we building, and why? | Intent + one status table |
 | `notes/` | Why did we decide that? | Scratchpads, merged into SPEC |
 
-## Using it on a new project
+## Install (once per machine)
 
-1. Copy these files into the new project's root (not `.git/`, not this README):
-   ```bash
-   cp -r CLAUDE.md ROADMAP.md HANDOFF.md SPEC.md notes /path/to/new-project/
-   ```
-2. Search for `{{` and fill in the placeholders. Delete the `<!-- -->` guidance comments as you go.
-3. Design the verification ladder (below) before writing feature tasks.
-4. Write the SPEC overview, then Phase 0 and Phase 1 of the ROADMAP. Later phases can stay rough.
-5. Start a session with: *"Read CLAUDE.md, ROADMAP.md and HANDOFF.md, then do the next task."*
+```powershell
+.\install.ps1
+```
+
+This links each folder in `skills/` into `~/.claude/skills/` (directory junctions, so edits here apply at once) and adds a short block to `~/.claude/CLAUDE.md` so every session knows the workflow exists. Re-run it after adding a skill; `.\install.ps1 -Uninstall` removes both.
+
+## The skills
+
+| Skill | When | What it does |
+|---|---|---|
+| `/workflow-setup [description]` | New project, or one without ROADMAP/HANDOFF | Surveys the code, asks a few questions, designs the verification ladder, fills in the templates in `skills/workflow-setup/template/`. On a project that already has the workflow, audits it for drift instead. |
+| `/next-task [count \| phase]` | Day to day | One task (or N, or to the gate): build, verify, note, commit, Run Log. Stops at 🧑 gates and on decision tasks. |
+| `/phase-end [feedback \| passed]` | Last task of a phase done; after you've tried the gate | Full tests, HANDOFF map + snapshot, spec status, gate instructions, Run Log, then stops. Later turns your gate feedback into tasks, or records the pass. |
+
+Each project's own `CLAUDE.md` and ROADMAP rules win over the skills, so a project can adjust the process (its spec can be a GDD or PRD, for example).
+
+## Without the skills
+
+Copy `skills/workflow-setup/template/*` into the project root, search for `{{` and fill in the placeholders, design the verification ladder (below) before writing feature tasks, then start sessions with *"Read CLAUDE.md, ROADMAP.md and HANDOFF.md, then do the next task."*
 
 ## The loop
 
