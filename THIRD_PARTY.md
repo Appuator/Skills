@@ -13,6 +13,7 @@ files were left out; everything else is unchanged unless noted below.
 | `domain-modeling` | `skills/engineering/domain-modeling` |
 | `diagnosing-bugs` | `skills/engineering/diagnosing-bugs` |
 | `prototype` | `skills/engineering/prototype` |
+| `codebase-design` | `skills/engineering/codebase-design` |
 
 Local changes: none yet.
 

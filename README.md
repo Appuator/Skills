@@ -44,6 +44,7 @@ Copied in from [mattpocock/skills](https://github.com/mattpocock/skills) (MIT); 
 | `domain-modeling` | Called by `grill-with-docs` | Challenges fuzzy terms, keeps `GLOSSARY.md`, offers an ADR only for hard-to-reverse, surprising trade-offs. |
 | `diagnosing-bugs` | A bug that resists a first look | Builds a command that goes red on the bug before theorising, then minimise → hypothesise → instrument → fix + regression test. Model-invoked. |
 | `prototype` | A design question that's hard to settle on paper | Throwaway code: a single HTML state-machine demo, or switchable UI variants. Model-invoked. |
+| `codebase-design` | Designing or reshaping a module's interface | The deep-module vocabulary (module, interface, depth, seam, adapter, leverage, locality), the deletion test, how to deepen given each kind of dependency, and a "design it twice" pattern with parallel subagents. Model-invoked. |
 
 ## Without the skills
 
