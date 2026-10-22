@@ -39,7 +39,16 @@ Phase 0 Foundation ─► Phase 1 {{CORE}} ─► Phase 2 {{...}} ─► ...
 
 Task markers: `[ ]` todo · `[x]` done · `[!]` blocked (note says why) · 🧑 human gate.
 
-### 2.3 The per-task loop
+### 2.3 Writing tasks
+- **Vertical slices.** Each task cuts a narrow but complete path through every layer it touches (data, logic, UI, test) and can be verified on its own. Not "all the models, then all the screens".
+- **One session's worth.** A task fits in one fresh context window. Split anything bigger.
+- **Prefactor first.** If the current code makes a task awkward, put a task before it that reshapes the code without changing behavior (tests stay green). Make the change easy, then make the easy change.
+- **Wide refactors** (one mechanical change that breaks many call sites at once, like renaming a shared type) can't be a vertical slice. Split them into expand (add the new form beside the old), migrate (move callers over in batches, one task each), and contract (delete the old form). Tests stay green after every task.
+- **Seams.** A task that adds behavior names its test seam unless it's one in `CLAUDE.md` "Test seams".
+- **Order is the dependency.** Tasks run top to bottom. When a task can't start until an earlier, non-adjacent task is done, end it with `(needs: <first words of that task>)`; `/next-task` skips it while that task is `[!]`.
+- Real names in task text are fine; code snippets aren't (they go stale; the spec or a note holds the detail).
+
+### 2.4 The per-task loop
 ```
 Read CLAUDE.md + next ROADMAP task
         │
@@ -50,7 +59,7 @@ Failing test at a seam (new behavior) ──► change code ──► build ─�
 git status (catch generated junk) ──► commit ──► mark [x] + note ──► next task
 ```
 
-### 2.4 Verification strategy (cheapest first)
+### 2.5 Verification strategy (cheapest first)
 | Layer | Tests | How |
 |---|---|---|
 | 1. Unit tests | Pure rules | {{TEST_CMD}} |
@@ -58,7 +67,7 @@ git status (catch generated junk) ──► commit ──► mark [x] + note ─
 | 3. {{LAYER_3_NAME}} | UI and flows | {{LAYER_3_HOW}} |
 | 🧑 Human gate | {{FEEL_UX_TASTE}} | You check it |
 
-### 2.5 Keeping Claude's context clean
+### 2.6 Keeping Claude's context clean
 - Exclude generated folders from searches (listed in CLAUDE.md).
 - Run long builds in a subagent that returns only success or the first error.
 - One agent drives a shared resource (dev server, editor, device) at a time.

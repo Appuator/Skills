@@ -14,7 +14,7 @@ If the project has no `ROADMAP.md`/`HANDOFF.md`, stop and suggest `/workflow-set
 
 ## 1. Orient
 1. Read `CLAUDE.md`, then `ROADMAP.md` §2 (rules) and the current phase, then `HANDOFF.md` §6 (current state). Read the rest of HANDOFF only when the task touches an area (§1 map, §4 bugs in that area).
-2. **Find the task:** the first `[ ]` in roadmap order. Skip `[!]` tasks (blocked) and parked ideas.
+2. **Find the task:** the first `[ ]` in roadmap order. Skip `[!]` tasks (blocked), parked ideas, and tasks whose `(needs: ...)` task is `[!]`. If the current phase is still a one-line sketch with no tasks, stop: `/phase-end passed` plans it.
 3. **Gate check:** if every task in the current phase is `[x]`/`[!]` and the Run Log doesn't say its 🧑 gate passed, **stop**: the phase is waiting for the human. If `/phase-end` hasn't run for it (no gate instructions under the phase), run that instead. Otherwise remind the user what to check at the gate.
 4. **Decision tasks** ("Decide ...", open questions): don't decide for the user. Lay out the options with a recommendation, ask (`AskUserQuestion`), then record the answer where the task says (decisions log, spec) and continue.
 5. Read every spec section, notes file and HANDOFF row the task names. Read later notes under the task (`- Note (date): ...`): they override the older task text.

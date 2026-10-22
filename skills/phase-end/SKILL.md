@@ -30,4 +30,5 @@ The project's `CLAUDE.md` and `ROADMAP.md` §2 win where they differ from this f
 1. Turn each piece of feedback into a task **appended at the end of the phase** (never inserted or reordered), e.g. `- [ ] Gate feedback (YYYY-MM-DD): <change>`. Decisions the user made go in the decisions log and the spec (plus a linked ADR if the decision is hard to reverse, surprising, and a real trade-off); answers to "confirm at the gate" go into §6 "Settled".
 2. Feedback that needs work: say the follow-up tasks are queued; `/next-task phase` builds them, then this skill runs again.
 3. **Passed** (the user says so explicitly): Run Log entry `### YYYY-MM-DD — Phase N gate | 🧑 gate passed`, and update HANDOFF §6 "Where we are" (phase done, gate passed, next phase). Commit as `Phase N gate passed`.
-4. Never mark a gate passed on your own judgment.
+4. **Plan the next phase** if it's still a one-line sketch. Read the spec sections it covers, then draft its goal, tasks (following ROADMAP §2.3 "Writing tasks"), "Done when" and 🧑 gate question. Show the tasks as a numbered list (task, `needs` if any, what it makes work) and ask whether the size and order are right; adjust until the user approves, then write them into the ROADMAP and commit as `Plan Phase N+1`.
+5. Never mark a gate passed on your own judgment.
