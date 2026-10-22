@@ -44,7 +44,7 @@ Task markers: `[ ]` todo · `[x]` done · `[!]` blocked (note says why) · 🧑 
 Read CLAUDE.md + next ROADMAP task
         │
         ▼
-Change code ──► build ──► unit tests ──► higher verification layers as needed
+Failing test at a seam (new behavior) ──► change code ──► build ──► unit tests ──► higher verification layers as needed
         │
         ▼
 git status (catch generated junk) ──► commit ──► mark [x] + note ──► next task

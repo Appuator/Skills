@@ -40,6 +40,8 @@ Read at session start: `ROADMAP.md` (next task + rules), `HANDOFF.md` (architect
 1. Unit tests (pure logic, no app running).
 2. {{LAYER_2}} <!-- a permanent, agent-callable debug surface: debug CLI, admin endpoints, seed scripts, cheat commands -->
 3. {{LAYER_3}} <!-- UI automation, end-to-end against a dev instance -->
+- Test seams: {{SEAMS}} <!-- the few public interfaces tests go through, e.g. "pricing: quote(cart)", "API: HTTP routes via the test client". Tests never reach past these. -->
+- Tests: write the failing test first and see it fail on the missing behavior; expected values come from the spec or a hand-worked example, never recomputed the way the code does.
 - Human gate: {{WHAT_ONLY_A_HUMAN_CAN_CHECK}}
 - Before every commit: `git status` — revert anything generated or test-only.
 

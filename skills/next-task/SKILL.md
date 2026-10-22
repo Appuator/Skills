@@ -21,6 +21,7 @@ If the project has no `ROADMAP.md`/`HANDOFF.md`, stop and suggest `/workflow-set
 6. Branch: follow the project's convention. If on the default branch and none is stated, create `phase-<n>-<slug>` before the first commit.
 
 ## 2. Build
+- **Red first:** if the task adds or changes behavior a test can reach, write that test and watch it fail (§3 "Red before green") before writing the code.
 - Follow the project's conventions in `CLAUDE.md` (naming, where logic vs config lives, required files).
 - Put rules that decide outcomes in pure functions with unit tests.
 - Keep tuning values in config/data, not code.
@@ -28,6 +29,12 @@ If the project has no `ROADMAP.md`/`HANDOFF.md`, stop and suggest `/workflow-set
 
 ## 3. Verify (cheapest layer first)
 Use the ladder in `CLAUDE.md` "Verification recipe": unit tests, then the debug surface, then UI/end-to-end. Stop at the cheapest layer that actually proves the task's claim; a task that changes behavior the user sees needs a run of the real thing, not only unit tests. Record measured results (numbers, log lines, test counts) for the note.
+
+**Seams.** Tests go through a public interface (a seam), never into internals, so they survive any refactor that keeps the behavior. Use the seam the task, the spec or `CLAUDE.md` "Test seams" names. If none is named, use the highest existing seam that reaches the behavior; add a new one only when nothing reaches it, and as high as possible. A seam you picked or added yourself is an interpretation: list it in the task note for the gate rather than stopping to ask. The `codebase-design` skill has the vocabulary if the seam's placement is itself the question.
+
+**Red before green.** For new behavior or a bug fix, write the test first and run it. It must fail on the missing behavior (an assertion about the symptom), not on a compile error or a typo. Then write only enough code to pass it, one behavior per test-then-code cycle, never a batch of tests up front. Skip it when there is no new behavior to assert (refactors keep the existing tests green; config, docs). If you can't make a bug go red, the test is at the wrong seam or the bug is hard: use the `diagnosing-bugs` skill. Say in the note that you saw red.
+
+**No tautological tests.** Each expected value comes from a source independent of the code: a literal worked out by hand, a number from the spec, a known-good output. A test that recomputes the answer the way the code does (`expect(add(a, b)).toBe(a + b)`), or a snapshot taken from the current code and accepted without checking it, passes by construction and proves nothing.
 
 Things only a human can check (feel, UX, taste) are not failures: note them for the gate.
 

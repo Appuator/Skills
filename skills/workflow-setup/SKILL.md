@@ -31,7 +31,7 @@ Recommend an answer for each when the code or description suggests one.
 ## 3. Design the verification ladder
 
 This is the most important part, and it differs per project. For each layer, decide something Claude can **run on its own**:
-1. **Unit tests**: the exact command and where results land. Which rules must be pure functions so they can be tested without the app running?
+1. **Unit tests**: the exact command and where results land. Which rules must be pure functions so they can be tested without the app running? Which public interfaces are the **test seams** (fewer and higher is better)? They go in `CLAUDE.md` "Test seams"; `/next-task` tests only through them.
 2. **A permanent agent-callable debug surface**: debug CLI, dev-only API endpoints, seed/fixture scripts, console/cheat commands, feature flags. It must be permanent (it also helps the human test by hand), not throwaway scaffolding. If none exists, Phase 0 builds the smallest one (a `ping`).
 3. **UI / end-to-end**: browser automation, simulator tests, screenshots, editor automation.
 4. **🧑 Human gate**: only what the machine can't judge.
@@ -65,6 +65,6 @@ Read `CLAUDE.md`, `ROADMAP.md`, `HANDOFF.md` and the spec (it may have another n
 - Spec build status that disagrees with the ROADMAP (`[x]` tasks still marked planned, or inline "(planned)" tags that are stale).
 - Tasks deleted or reordered (check `git log -p ROADMAP.md` if suspicious), `[!]` tasks without a note, a missing Run Log entry for recent commits.
 - Gotchas repeated in HANDOFF §4 that should be a CLAUDE.md rule.
-- Older layout: a Glossary section in the spec instead of `GLOSSARY.md`, or a `CLAUDE.md` without the decisions/ADR task rule. Offer to move the glossary out and add the rule from the template.
+- Older layout: a Glossary section in the spec instead of `GLOSSARY.md`, or a `CLAUDE.md` without the decisions/ADR task rule or the "Test seams" and red-first lines in its verification recipe. Offer to move the glossary out and add the missing lines from the template.
 - An ADR in `docs/adr/` with no decisions-log entry linking it.
 Offer to fix what you found.
