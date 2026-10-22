@@ -2,7 +2,7 @@
 
 <!-- Loaded every session: keep this file under ~150 lines. Put anything long in HANDOFF.md and point to it. Delete these HTML comments once filled in. -->
 
-Read at session start: `ROADMAP.md` (next task + rules), `HANDOFF.md` (architecture, bugs, gotchas). Design: `SPEC.md` (what the project is; its status table says what is built). Read a `notes/*.md` file only when a task points to it; `SPEC.md` wins on conflicts.
+Read at session start: `ROADMAP.md` (next task + rules), `HANDOFF.md` (architecture, bugs, gotchas). Design: `SPEC.md` (what the project is; its status table says what is built). Read a `notes/*.md` file only when a task points to it; `SPEC.md` wins on conflicts. Use the terms in `GLOSSARY.md`; before changing an area, check `docs/adr/` for decisions that cover it.
 
 ## How to help
 <!-- Who you are and how you want to be helped. Example: "Mentor a backend developer new to mobile: explain the why behind platform conventions, define terms, call out gotchas." -->
@@ -20,6 +20,7 @@ Read at session start: `ROADMAP.md` (next task + rules), `HANDOFF.md` (architect
 5. Stop at every 🧑 human gate.
 6. At phase end: overwrite `HANDOFF.md` §6 (current state), update the `SPEC.md` status table. After any bug fix: add it to `HANDOFF.md` §4 (symptom → root cause → fix).
 7. A lesson that applies every session becomes a line under Gotchas below.
+8. Every decision gets a ROADMAP decisions-log entry. One that is hard to reverse, surprising without context, and a real trade-off also gets an ADR in `docs/adr/`, linked from that entry.
 
 ## Conventions
 <!-- Naming, folder layout, where logic vs config lives. Example: "Business rules in pure functions with unit tests in tests/unit/." -->

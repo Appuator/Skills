@@ -6,7 +6,7 @@ argument-hint: "[short description of the project]"
 
 # workflow-setup
 
-Install the workflow into the current project. The templates are in `template/` next to this file: `CLAUDE.md`, `ROADMAP.md`, `HANDOFF.md`, `SPEC.md`, `notes/README.md`. They contain `{{PLACEHOLDERS}}` and `<!-- guidance -->` comments. Read all five before you start; they define the target shape.
+Install the workflow into the current project. The templates are in `template/` next to this file: `CLAUDE.md`, `ROADMAP.md`, `HANDOFF.md`, `SPEC.md`, `GLOSSARY.md`, `notes/README.md`. They contain `{{PLACEHOLDERS}}` and `<!-- guidance -->` comments. Read all six before you start; they define the target shape.
 
 The outcome: a fresh Claude session can open this project, read `CLAUDE.md`, and build, test, drive the app and do the next task without asking anything.
 
@@ -42,7 +42,8 @@ Note what can't be automated (e.g. OS input injection) so gates cover it. Exampl
 
 Copy each template into the project root (skip a file that already exists; merge instead), then fill it in:
 - **CLAUDE.md**: real commands (prefer ones you found in the repo), conventions observed in the code, the ladder, generated folders to exclude. Keep it **under ~150 lines**; remove the guidance comments.
-- **SPEC.md**: overview, pillars, non-goals, a glossary if the project has its own terms, one section per feature area that's known, open questions. The **Status** table is the only place build status goes.
+- **SPEC.md**: overview, pillars, non-goals, one section per feature area that's known, open questions. The **Status** table is the only place build status goes. Terms are defined in `GLOSSARY.md`, not here.
+- **GLOSSARY.md**: only if the project already has its own terms (from the user's description or the code); follow the domain-modeling skill's `GLOSSARY-FORMAT.md`. Otherwise skip it: `/grill-with-docs` creates it when the first term is settled. Don't create `docs/adr/` up front either; the first ADR creates it.
 - **ROADMAP.md**: keep §2 (process) as is. Tailor Phase 0 to this project (drop tasks already done in an existing codebase, mark them `[x]` with a note). Write Phase 1 around the **riskiest or most distinctive** idea, proven first while change is cheap. Sketch later phases as one line each; detail comes when they're next. Explain the order under "Why this order". Each phase has a goal, tasks, "Done when" and a **🧑 Gate** with one question only a human can answer.
 - **HANDOFF.md**: for existing code, fill §1 (architecture map) from your survey: real names, one non-obvious fact each. Fill §6 with the starting state.
 - **notes/README.md**: copy as is. If the user's design thinking is long or undecided, put it in `notes/<topic>-ideas.md` and only decisions in SPEC.
@@ -64,4 +65,6 @@ Read `CLAUDE.md`, `ROADMAP.md`, `HANDOFF.md` and the spec (it may have another n
 - Spec build status that disagrees with the ROADMAP (`[x]` tasks still marked planned, or inline "(planned)" tags that are stale).
 - Tasks deleted or reordered (check `git log -p ROADMAP.md` if suspicious), `[!]` tasks without a note, a missing Run Log entry for recent commits.
 - Gotchas repeated in HANDOFF §4 that should be a CLAUDE.md rule.
+- Older layout: a Glossary section in the spec instead of `GLOSSARY.md`, or a `CLAUDE.md` without the decisions/ADR task rule. Offer to move the glossary out and add the rule from the template.
+- An ADR in `docs/adr/` with no decisions-log entry linking it.
 Offer to fix what you found.

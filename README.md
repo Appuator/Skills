@@ -11,6 +11,8 @@ Claude starts every session with no memory of earlier ones. These files are that
 | `HANDOFF.md` | What is true about the system right now? | Reference + bug log + current-state snapshot |
 | `SPEC.md` | What are we building, and why? | Intent + one status table |
 | `notes/` | Why did we decide that? | Scratchpads, merged into SPEC |
+| `GLOSSARY.md` | What do our words mean? | The project's terms only; created when the first term is settled |
+| `docs/adr/` | Why is this hard-to-reverse thing the way it is? | One short record per decision that is hard to reverse, surprising and a real trade-off; linked from the ROADMAP decisions log |
 
 ## Install (once per machine)
 
@@ -29,6 +31,19 @@ This links each folder in `skills/` into `~/.claude/skills/` (directory junction
 | `/phase-end [feedback \| passed]` | Last task of a phase done; after you've tried the gate | Full tests, HANDOFF map + snapshot, spec status, gate instructions, Run Log, then stops. Later turns your gate feedback into tasks, or records the pass. |
 
 Each project's own `CLAUDE.md` and ROADMAP rules win over the skills, so a project can adjust the process (its spec can be a GDD or PRD, for example).
+
+### Vendored from mattpocock/skills
+
+Copied in from [mattpocock/skills](https://github.com/mattpocock/skills) (MIT); source commit and license in [THIRD_PARTY.md](THIRD_PARTY.md).
+
+| Skill | When | What it does |
+|---|---|---|
+| `/grill-me` | Sharpening a plan with no repo under it | Interviews you a round at a time, with a recommended answer per question, until every decision is settled. Saves nothing. |
+| `/grill-with-docs` | Same, inside a project | `grilling` + `domain-modeling`: the same interview, also writing `GLOSSARY.md` and ADRs (`docs/adr/`) as terms and decisions settle. |
+| `grilling` | Called by the two above | The interview itself. Model-invoked on "grill" phrasing. |
+| `domain-modeling` | Called by `grill-with-docs` | Challenges fuzzy terms, keeps `GLOSSARY.md`, offers an ADR only for hard-to-reverse, surprising trade-offs. |
+| `diagnosing-bugs` | A bug that resists a first look | Builds a command that goes red on the bug before theorising, then minimise → hypothesise → instrument → fix + regression test. Model-invoked. |
+| `prototype` | A design question that's hard to settle on paper | Throwaway code: a single HTML state-machine demo, or switchable UI variants. Model-invoked. |
 
 ## Without the skills
 

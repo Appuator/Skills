@@ -1,6 +1,6 @@
 # {{PROJECT}} — Roadmap
 
-> **Companion docs:** `SPEC.md` (*what* we build) · this file (*order* and *how*) · `HANDOFF.md` (*what is true now*) · `CLAUDE.md` (*rules* every session) · `notes/` (reasoning behind decisions; merged into SPEC once decided, SPEC wins on conflicts).
+> **Companion docs:** `SPEC.md` (*what* we build) · this file (*order* and *how*) · `HANDOFF.md` (*what is true now*) · `CLAUDE.md` (*rules* every session) · `notes/` (reasoning behind decisions; merged into SPEC once decided, SPEC wins on conflicts) · `GLOSSARY.md` (the project's words) · `docs/adr/` (hard-to-reverse decisions).
 
 ## 1. Plan at a glance
 <!-- A small diagram or list of phases in order. -->
@@ -24,6 +24,8 @@ Phase 0 Foundation ─► Phase 1 {{CORE}} ─► Phase 2 {{...}} ─► ...
 | `HANDOFF.md` | Architecture map, bugs with root causes, hard-won facts, current state | Reference + snapshot (§6) | Phase end, after every bug |
 | `SPEC.md` | What the project is, plus a status table of what is built | Intent | When the design changes; status at phase end |
 | `notes/*.md` | Reasoning, options turned down, worked numbers | Scratchpad | During design |
+| `GLOSSARY.md` | The project's own terms, one or two sentences each; no implementation details | Reference | When a term is settled |
+| `docs/adr/*.md` | One short record per decision that is hard to reverse, surprising, and a real trade-off | Reference | When such a decision is made |
 
 **Logs grow, snapshots get overwritten.** The Run Log and HANDOFF §4 are append-only. HANDOFF §6 and the SPEC status table are overwritten, never appended to.
 
@@ -100,6 +102,6 @@ git status (catch generated junk) ──► commit ──► mark [x] + note ─
 ---
 
 ## 6. Decisions log
-<!-- Append-only. Decisions that change the plan or the spec. -->
+<!-- Append-only. Decisions that change the plan or the spec. A decision that is hard to reverse, surprising without context, and a real trade-off also gets an ADR (format: the domain-modeling skill's ADR-FORMAT.md); link it here rather than repeating it. -->
 ### YYYY-MM-DD — {{decision}}
-- Options considered, what was chosen, why. SPEC section updated: §{{N}}.
+- Options considered, what was chosen, why. SPEC section updated: §{{N}}. ADR: [`docs/adr/{{NNNN-slug}}.md`](docs/adr/{{NNNN-slug}}.md) (only if it qualifies).

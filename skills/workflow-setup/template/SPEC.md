@@ -2,8 +2,9 @@
 
 > **One line:** {{what it is, for whom}}
 > **Sources merged:** {{notes/*.md files and dates they were merged}}
+> **Terms:** `GLOSSARY.md` · **Hard-to-reverse decisions:** `docs/adr/`
 
-<!-- SPEC says WHAT and WHY. ROADMAP says in what order. Keep build status in the table below only, not as inline "(planned)" tags: one table is easy to keep true, scattered tags drift. -->
+<!-- SPEC says WHAT and WHY. ROADMAP says in what order. Keep build status in the table below only, not as inline "(planned)" tags: one table is easy to keep true, scattered tags drift. Use the words defined in GLOSSARY.md; don't define terms here. -->
 
 ## Status
 *Updated at each phase end.*
@@ -11,12 +12,6 @@
 | § | Feature | Status | Phase |
 |---|---|---|---|
 | 2 | {{feature}} | Planned / Decided / Built / Parked | {{N}} |
-
-## Glossary
-<!-- Terms the project invents or uses in a specific sense. Code and docs use these words. -->
-| Term | Meaning |
-|---|---|
-| {{term}} | {{meaning}} |
 
 ## 1. Overview
 - **Problem / pitch:** {{...}}
