@@ -35,7 +35,7 @@ Phase 0 Foundation ─► Phase 1 {{CORE}} ─► Phase 2 {{...}} ─► ...
 3. Blocked or failed twice → mark `[!]`, add a one-line note under it, move on. **No more than 2 attempts.**
 4. Never delete or reorder tasks. Only change their status and append notes (`- Note (YYYY-MM-DD): ...`).
 5. End each session with a **Run Log** entry (date, tasks done, blockers).
-6. Every phase ends with a **🧑 human gate**. Don't start the next phase until it passes. Gate feedback becomes new tasks at the end of the phase.
+6. Every phase ends with a **🧑 human gate**. Don't start the next phase until it passes. Gate feedback becomes new tasks at the end of the phase. Process changes proposed at phase end are made only if approved at the gate.
 
 Task markers: `[ ]` todo · `[x]` done · `[!]` blocked (note says why) · 🧑 human gate.
 

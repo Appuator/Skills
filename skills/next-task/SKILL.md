@@ -42,7 +42,7 @@ Things only a human can check (feel, UX, taste) are not failures: note them for 
 
 ## 4. Record and commit
 1. Mark the task `[x]` and add `- Note (YYYY-MM-DD): ...` under it: what was built (real names), how it was verified, any interpretation the user should confirm at the gate. Never delete or reorder tasks, never rewrite another task's text.
-2. **Bug found and fixed?** Append to HANDOFF §4: date, **symptom** → root cause → fix, and the rule it teaches. If the rule applies every session, add one line to `CLAUDE.md` Gotchas.
+2. **Bug found and fixed?** Append to HANDOFF §4: date, **symptom** → root cause → fix, and the rule it teaches. Don't edit `CLAUDE.md` or other process files yourself: `/phase-end` proposes rules that apply every session, and the human approves them at the gate.
 3. New area or class that the HANDOFF §1 map doesn't cover? Add a row.
 4. Design changed while building (the user decided something)? Update the spec and the ROADMAP decisions log. If the decision is hard to reverse, surprising, and a real trade-off, also write an ADR in `docs/adr/` and link it from the log entry. A new or sharpened term goes in `GLOSSARY.md`.
 5. `git status`: revert generated, autosaved or test-only files. Then commit: **one task = one commit**, message = the task text (shorten a very long task to its first sentence).

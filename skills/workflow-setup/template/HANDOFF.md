@@ -27,7 +27,7 @@ Update at the end of every phase and after any bug fix. Read alongside `CLAUDE.m
 | {{metric}} | {{value}} | {{...}} |
 
 ## 4. Bugs & fixes (chronological)
-*Format: YYYY-MM-DD: **Symptom** → root cause → fix (commit). End with the rule it teaches, if any; promote rules that apply every session to CLAUDE.md Gotchas.*
+*Format: YYYY-MM-DD: **Symptom** → root cause → fix (commit). End with the rule it teaches, if any; rules that apply every session are proposed for CLAUDE.md Gotchas (or an automated check) at phase end and added once approved at the gate.*
 
 - {{date}}: **{{symptom}}** → {{root cause}} → {{fix}}. Rule: {{...}}
 

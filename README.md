@@ -92,7 +92,8 @@ Each gate gets **one question** only a human can answer ("does the checkout feel
 - **Logs grow, snapshots get overwritten.** The Run Log, the decisions log and HANDOFF §4 are append-only; HANDOFF §6 and the SPEC status table are rewritten each phase. A snapshot that gets appended to turns into a second, messier log.
 - **Build status lives in one table** (SPEC "Status"), not as inline "(planned)" tags that each go stale on their own.
 - **Tasks are never deleted or reordered**, so the roadmap is also the audit trail.
-- **Bugs are recorded as symptom → root cause → fix.** A lesson that applies every session becomes one line in CLAUDE.md Gotchas.
+- **Bugs are recorded as symptom → root cause → fix.** A lesson that applies every session becomes one line in CLAUDE.md Gotchas, or an automated check if it's mechanical.
+- **Process changes wait for the gate.** At phase end Claude proposes environment fixes (checks, gotchas, pointers, cleanup), each citing its evidence; only the ones you approve get made, and rejected ones are logged so they aren't proposed again.
 - **CLAUDE.md stays under ~150 lines**, because it costs context every session. Everything else is read on demand.
 - **Two attempts, then move on.** This stops an agent from looping on a blocked task.
 
@@ -103,4 +104,4 @@ Each gate gets **one question** only a human can answer ("does the checkout feel
 - [ ] HANDOFF §1 updated for new areas; §6 overwritten
 - [ ] SPEC status table updated
 - [ ] Run Log entry
-- [ ] 🧑 Gate instructions written in the ROADMAP (how to try it, what to confirm)
+- [ ] 🧑 Gate instructions written in the ROADMAP (how to try it, what to confirm, process changes to approve)

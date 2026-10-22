@@ -19,7 +19,7 @@ Read at session start: `ROADMAP.md` (next task + rules), `HANDOFF.md` (architect
 4. Never delete/reorder tasks. Append a Run Log entry per session.
 5. Stop at every 🧑 human gate.
 6. At phase end: overwrite `HANDOFF.md` §6 (current state), update the `SPEC.md` status table. After any bug fix: add it to `HANDOFF.md` §4 (symptom → root cause → fix).
-7. A lesson that applies every session becomes a line under Gotchas below.
+7. Process changes (this file, ROADMAP §2, lint/hook/CI config) are proposed at phase end and made only after the human approves them at the gate. A lesson that applies every session becomes a line under Gotchas below that way, or an automated check if it's mechanical.
 8. Every decision gets a ROADMAP decisions-log entry. One that is hard to reverse, surprising without context, and a real trade-off also gets an ADR in `docs/adr/`, linked from that entry.
 
 ## Conventions
