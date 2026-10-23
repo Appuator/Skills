@@ -3,7 +3,10 @@
 #    edits in this repo apply immediately)
 #  - adds the block in global/CLAUDE.md to ~/.claude/CLAUDE.md (replaced in place on re-run)
 # Run again after adding a skill. Uninstall: .\install.ps1 -Uninstall
-param([switch]$Uninstall)
+# -Copy vendors the skills instead: real folders in ~/.claude/skills/ that can be customized for that
+# machine. Re-runs only add skills that are missing, so customized copies are never overwritten, and
+# -Uninstall leaves copies in place (delete them by hand).
+param([switch]$Uninstall, [switch]$Copy)
 
 $ErrorActionPreference = 'Stop'
 $repo = $PSScriptRoot
@@ -19,13 +22,26 @@ foreach ($skill in Get-ChildItem (Join-Path $repo 'skills') -Directory) {
     $link = Join-Path $skillsDir $skill.Name
     $existing = Get-Item $link -Force -ErrorAction SilentlyContinue
     if ($existing) {
+        if ($Copy -and -not $existing.LinkType) { Write-Host "Already vendored, kept as is: $($skill.Name)"; continue }
         $isOurs = $existing.LinkType -and ($existing.Target -eq $skill.FullName)
         if (-not $isOurs) { Write-Warning "Skipped $($skill.Name): $link exists and isn't a link to this repo."; continue }
+        if ($Copy -and -not $Uninstall) {
+            # Switching an existing install to vendored: replace the link with a copy.
+            $existing.Delete()
+            Copy-Item -Recurse $skill.FullName $link
+            Write-Host "Replaced link with vendored copy: $link"
+            continue
+        }
         if ($Uninstall) { $existing.Delete(); Write-Host "Removed $link" }
         else { Write-Host "Already linked: $($skill.Name)" }
         continue
     }
-    if (-not $Uninstall) {
+    if ($Uninstall) { continue }
+    if ($Copy) {
+        Copy-Item -Recurse $skill.FullName $link
+        Write-Host "Vendored $($skill.Name) -> $link"
+    }
+    else {
         New-Item -ItemType Junction -Path $link -Target $skill.FullName | Out-Null
         Write-Host "Linked $link -> $($skill.FullName)"
     }

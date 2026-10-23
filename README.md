@@ -20,7 +20,15 @@ Claude starts every session with no memory of earlier ones. These files are that
 .\install.ps1
 ```
 
-This links each folder in `skills/` into `~/.claude/skills/` (directory junctions, so edits here apply at once) and adds a short block to `~/.claude/CLAUDE.md` so every session knows the workflow exists. Re-run it after adding a skill; `.\install.ps1 -Uninstall` removes both.
+This links each folder in `skills/` into `~/.claude/skills/` (directory junctions, so edits here apply at once) and adds a short block to `~/.claude/CLAUDE.md` so every session knows the workflow exists. Re-run it after adding a skill; `.\install.ps1 -Uninstall` removes both. Needs PowerShell 7 (`pwsh`).
+
+On a machine where the skills should be customized to fit its environment (a work computer, say), vendor them instead:
+
+```powershell
+.\install.ps1 -Copy
+```
+
+This copies each skill into `~/.claude/skills/` as a real folder you can edit there; the clone can be deleted afterwards. Re-running only adds skills that are missing, so customized copies are never overwritten. Existing links to this repo are replaced with copies. `-Uninstall` leaves vendored copies alone; delete those by hand. To pull a later upstream change into a customized copy, merge it by hand (or ask Claude to diff the two and merge).
 
 ## The skills
 
