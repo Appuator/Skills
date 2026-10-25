@@ -22,7 +22,14 @@
 ## 2. Core loop / main flow
 <!-- What the user does, over and over. A small diagram helps. -->
 
-## 3. Data design *(optional)*
+## 3. Tech stack
+<!-- Where each part of the project runs and what it is built with, as names and descriptions: no file paths, URLs, connection strings or keys. One row per part: the apps you deploy, data stores, and outside services you call. "Talks to" names the other rows it connects to and why. Example: "Web app | Azure Web App | Razor Pages (.NET) | Azure SQL database for all app data; Stripe API for payments". Mark choices with a date; locked-in ones also go in CLAUDE.md "Locked-in decisions". -->
+
+| Part | Runs on / hosted by | Built with | Talks to |
+|---|---|---|---|
+| {{part}} | {{host or service}} | {{framework, language, key libraries}} | {{other part}}: {{what for}} |
+
+## 4. Data design *(optional)*
 <!-- Only for projects with a database; delete this section otherwise. Design level, not DDL: each table's name, what one row is, and its fields with a plain type (text, number, date, bool, or → another table), whether required, and rules like "unique per user". Indexes, column types and migrations live in code. Mark decisions with a date like the feature sections. Update when a task changes the shape of the data. -->
 
 **Core connections:**
@@ -42,8 +49,8 @@ erDiagram
 | id | id | |
 | {{field}} | text / number / date / bool / → {{table}} | {{required? unique? what it means}} |
 
-## 4. {{Feature area}}
-<!-- One section per area. Mark decisions with a date: "(decided YYYY-MM-DD)". -->
+## 5. {{Feature area}}
+<!-- One section per area. Mark decisions with a date: "(decided YYYY-MM-DD)". Include at least one diagram or table that explains the area's main idea: a Mermaid flowchart or state diagram for a flow, a table for rules, options or states. Pick whichever makes the concept clear at a glance; skip it only if the area really is one sentence. -->
 
 **Out of scope:** {{what this area deliberately won't do}}
 
