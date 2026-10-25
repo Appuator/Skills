@@ -22,7 +22,27 @@
 ## 2. Core loop / main flow
 <!-- What the user does, over and over. A small diagram helps. -->
 
-## 3. {{Feature area}}
+## 3. Data design *(optional)*
+<!-- Only for projects with a database; delete this section otherwise. Design level, not DDL: each table's name, what one row is, and its fields with a plain type (text, number, date, bool, or → another table), whether required, and rules like "unique per user". Indexes, column types and migrations live in code. Mark decisions with a date like the feature sections. Update when a task changes the shape of the data. -->
+
+**Core connections:**
+<!-- Only the links that explain the data: users and the entities they own, and what those own in turn. Leave out lookup and join tables that add nothing to the picture. -->
+
+```mermaid
+erDiagram
+    USER ||--o{ ENTITY : owns
+    ENTITY ||--o{ CHILD : has
+```
+
+### {{table}}
+{{What one row is, who creates it, and when it is deleted.}}
+
+| Field | Type | Notes |
+|---|---|---|
+| id | id | |
+| {{field}} | text / number / date / bool / → {{table}} | {{required? unique? what it means}} |
+
+## 4. {{Feature area}}
 <!-- One section per area. Mark decisions with a date: "(decided YYYY-MM-DD)". -->
 
 **Out of scope:** {{what this area deliberately won't do}}
