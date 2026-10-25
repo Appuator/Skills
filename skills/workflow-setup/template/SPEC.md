@@ -52,6 +52,10 @@ erDiagram
 ## 5. {{Feature area}}
 <!-- One section per area. Mark decisions with a date: "(decided YYYY-MM-DD)". Include at least one diagram or table that explains the area's main idea: a Mermaid flowchart or state diagram for a flow, a table for rules, options or states. Pick whichever makes the concept clear at a glance; skip it only if the area really is one sentence. -->
 
+**User stories** *(optional)*:
+<!-- Who needs this area and why, one line each. Roles come from GLOSSARY.md. The user's need, not build steps (those are ROADMAP tasks); no build status (that's the Status table). Add "Done when ..." only if the acceptance condition isn't obvious. Delete this block if the area has no users to speak of. -->
+- As a {{role}}, I want {{goal}}, so that {{reason}}.
+
 **Out of scope:** {{what this area deliberately won't do}}
 
 **Testing:** {{the seam(s) that prove this area, preferably one high one; what a passing test shows (behavior, not internals); similar tests already in the codebase to copy}}
